@@ -21,21 +21,21 @@
                     android:layout_height="wrap_content" android:id="@+id/local_btn"
                     tools:layout_conversion_absoluteHeight="48dp" tools:layout_editor_absoluteY="683dp"
                     tools:layout_editor_absoluteX="0dp" tools:layout_conversion_absoluteWidth="91dp"
-                    android:backgroundTint="#467AE3"/>
+                    android:backgroundTint="#C0996A"/>
             <Button
                     android:text="Server"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/server_btn"
                     tools:layout_conversion_absoluteHeight="48dp" tools:layout_editor_absoluteY="683dp"
                     tools:layout_editor_absoluteX="91dp" tools:layout_conversion_absoluteWidth="91dp"
-                    android:backgroundTint="#467AE3"/>
+                    android:backgroundTint="#C0996A"/>
             <Button
                     android:text="Hybrid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/hybrid_btn"
                     tools:layout_conversion_absoluteHeight="48dp" tools:layout_editor_absoluteY="683dp"
                     tools:layout_editor_absoluteX="181dp" tools:layout_conversion_absoluteWidth="91dp"
-                    android:backgroundTint="#467AE3"/>
+                    android:backgroundTint="#C0996A"/>
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

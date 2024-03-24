@@ -22,7 +22,7 @@
                 <TextView
                         android:text="note...."
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/textView9"/>
+                        android:layout_height="wrap_content" android:id="@+id/textView12"/>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                 <TextView
                         android:text="note...."
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/textView9"/>
+                        android:layout_height="wrap_content" android:id="@+id/textView13"/>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -38,7 +38,7 @@
                 <TextView
                         android:text="note...."
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/textView9"/>
+                        android:layout_height="wrap_content" android:id="@+id/textView14"/>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -46,43 +46,129 @@
                 <TextView
                         android:text="note...."
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/textView9"/>
+                        android:layout_height="wrap_content" android:id="@+id/textView15"/>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
         <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="2dp" android:layout_weight="1" android:layout_margin="10dp">
-            <TextView
-                    android:text="Enter Note : "
-                    android:layout_width="244dp"
-                    android:layout_height="wrap_content" android:id="@+id/textView4" android:layout_weight="1"
-                    android:textSize="20sp"/>
-            <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:layout_weight="1">
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <TextView
+                    android:text="Enter Note : "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:id="@+id/note_label"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="......" android:textColor="#000000"/>
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
-        <LinearLayout
+                        android:hint="Enter note..."
+                        android:textColor="#000000"
+                        android:id="@+id/note_input"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="8dp" android:layout_weight="1" android:padding="10dp"
-                android:layout_margin="10dp" android:layout_marginEnd="10dp" android:paddingEnd="10dp">
-            <Button
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:text="Enter ID : "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:id="@+id/id_label"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter ID..."
+                        android:textColor="#000000"
+                        android:id="@+id/id_input"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:layout_marginEnd="10dp"
+            android:paddingEnd="10dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/add_server_btn"
                     android:text="Add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/add_hybrid_btn" android:layout_weight="1"
-                    android:backgroundTint="#467AE3"/>
-            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#c0996a"/>
+
+                <Button
+                    android:id="@+id/delete_server_btn"
                     android:text="Delete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/delete_hybrid_btn" android:layout_weight="1"
-                    android:backgroundTint="#467AE3"/>
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#c0996a"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/update_server_btn"
+                    android:text="Update"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#c0996a"/>
+
+                <Button
+                    android:id="@+id/view_server_btn"
+                    android:text="View ALL"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#c0996a"/>
+
+            </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 
