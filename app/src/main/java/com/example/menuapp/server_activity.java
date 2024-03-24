@@ -65,6 +65,7 @@ public class server_activity extends AppCompatActivity {
                 viewAllNotes();
             }
         });
+        viewAllNotes();
     }
 
     private void addNote() {
