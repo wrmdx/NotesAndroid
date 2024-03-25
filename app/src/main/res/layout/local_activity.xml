@@ -145,7 +145,7 @@
             android:orientation="horizontal"
             android:gravity="center"
             android:layout_margin="10dp"
-            android:layout_below="@id/add_hybrid_btn">
+            >
 
             <Button
                 android:id="@+id/update_local_btn"

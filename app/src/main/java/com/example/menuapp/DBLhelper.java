@@ -1,5 +1,6 @@
 package com.example.menuapp;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -51,7 +52,7 @@ public class DBLhelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
         if (cursor.moveToFirst()) {
             do {
-                String noteContent = cursor.getString(cursor.getColumnIndex(COLUMN_NOTE));
+                @SuppressLint("Range") String noteContent = cursor.getString(cursor.getColumnIndex(COLUMN_NOTE));
                 notesList.add(noteContent);
             } while (cursor.moveToNext());
         }

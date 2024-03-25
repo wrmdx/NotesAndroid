@@ -1,11 +1,12 @@
 package com.example.menuapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -17,13 +18,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import android.widget.LinearLayout;
+
 
 public class server_activity extends AppCompatActivity {
 
     private static final String TAG = server_activity.class.getSimpleName();
-    private static final String SERVER_URL = "http://localhost/notes/";
+    private static final String SERVER_URL = "http://10.0.2.2/notes/";
     private EditText idInput, noteInput;
+    private LinearLayout notesContainer; // Declare notesContainer as a class-level variable
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,9 @@ public class server_activity extends AppCompatActivity {
         Button deleteBtn = findViewById(R.id.delete_server_btn);
         Button updateBtn = findViewById(R.id.update_server_btn);
         Button viewBtn = findViewById(R.id.view_server_btn);
+
+        notesContainer = findViewById(R.id.card_server_container); // Initialize notesContainer
+
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +82,8 @@ public class server_activity extends AppCompatActivity {
         String note = noteInput.getText().toString().trim();
 
         String url = SERVER_URL + "insert.php";
+        Log.d(TAG, "Sending request to: " + url); // Debugging line to check connection
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -101,7 +112,7 @@ public class server_activity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("id", id); // Add id parameter
+                params.put("id", id);
                 params.put("note", note);
                 return params;
             }
@@ -196,7 +207,8 @@ public class server_activity extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    private void viewAllNotes() {
+    public void viewAllNotes() {
+        notesContainer.removeAllViews();
         String url = SERVER_URL + "viewList.php";
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -229,14 +241,46 @@ public class server_activity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
-
-    private void processNotesArray(JSONArray notesArray) throws JSONException {
-        for (int i = 0; i < notesArray.length(); i++) {
-            JSONObject noteObject = notesArray.getJSONObject(i);
-            String id = noteObject.getString("id");
-            String note = noteObject.getString("note");
-            // Display or process each note as needed (e.g., populate UI)
-            Log.d(TAG, "Note ID: " + id + ", Note: " + note);
+    private void processNotesArray(JSONArray notesArray) {
+        try {
+            for (int i = 0; i < notesArray.length(); i++) {
+                JSONObject noteObject = notesArray.getJSONObject(i);
+                String id = noteObject.getString("id");
+                String note = noteObject.getString("note");
+                Log.d(TAG, "Note ID: " + id + ", Note: " + note);
+                // Display the id and note in a TextView
+                displayNote(id, note);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
+
+    private void displayNote(String id, String note) {
+        // Create a TextView for each note and add it to a layout container
+        TextView textView = new TextView(this);
+        textView.setText("ID: " + id + ", Note: " + note);
+        // Assuming you have a layout container named 'notesContainer'
+        notesContainer.addView(textView);
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_home) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
 }
